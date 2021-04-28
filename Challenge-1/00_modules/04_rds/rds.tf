@@ -29,7 +29,7 @@ resource "aws_rds_cluster" "cluster-rds" {
   #kms_key_id = "${var.kms_key_universal}"
   storage_encrypted = true
   backup_retention_period             = 7
-  deletion_protection                 = true 
+  deletion_protection                 = false 
   copy_tags_to_snapshot = true
   db_cluster_parameter_group_name = "${aws_rds_cluster_parameter_group.cluster_parameter_group.id}"
   enabled_cloudwatch_logs_exports = ["postgresql"]
