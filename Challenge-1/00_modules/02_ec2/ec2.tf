@@ -32,37 +32,6 @@ resource "aws_autoscaling_policy" "bat" {
   autoscaling_group_name = aws_autoscaling_group.asg_main.name
 }
 
-
-/*
-resource "aws_instance" "ec2_main" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.ec2_main_sg.id]
-  key_name = var.key_name
-  monitoring = var.ec2_monitoring
-  disable_api_termination = var.ec2_disable_api_termination
-  subnet_id = var.subnet_main
-  user_data = <<EOF
-    #!/bin/bash
-    hostnamectl set-hostname --static ec2-${var.environment}}-${var.ec2_names}
-    echo "preserve_hostname: true" >>  /etc/cloud/cloud.cfg
-
-
-    EOF
-  iam_instance_profile = aws_iam_instance_profile.instance_profile_main.name
-  tags = {
-    Name = "aws-ec2-${var.application_name}-${var.environment}}-${var.ec2_names}"
-    Description = "EC2 instance for ${var.ec2_names} in ${var.application_name} ${var.environment} environment"
-    Environment = var.environment
-    CreatedBy = "BlazeClan Technologies"
-    Country = "var.country"
-    ServerType = var.tier_name
-  }
-}
-
-
-*/ 
-
 resource "aws_iam_role" "iam_role_main" {
   name = "aws-iamrole-${var.application_name}-${var.environment}-${var.ec2_names}"
   path = "/"
@@ -100,10 +69,10 @@ resource "aws_iam_role_policy_attachment" "iam_role_main_attach" {
 
 resource "aws_security_group" "ec2_main_sg" {
   description = "security group for ${var.ec2_names} in ${var.application_name} ${var.environment} environment"
-  name = "aws-sg-${var.application_name}-${var.environment}}-${var.ec2_names}"
+  name = "aws-sg-${var.application_name}-${var.environment}-${var.ec2_names}"
   vpc_id      = var.vpc_main
   tags = {
-    Name = "aws-sg-${var.application_name}-${var.environment}}-${var.ec2_names}"
+    Name = "aws-sg-${var.application_name}-${var.environment}-${var.ec2_names}"
     Description = "security group for ${var.ec2_names} in ${var.application_name} ${var.environment} environment"
     Environment = var.environment
   }
