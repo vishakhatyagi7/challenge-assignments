@@ -6,7 +6,7 @@ Libraries to be downloaded:
  - glom
  - requests
 
-The script expect one argument in the form of a string, which is the metadata key for which user wishes to find the respective value
+The script expects one argument in the form of a string, which is the metadata key for which user wishes to find the respective value
 
 For example:
  python3 get_metadata.py ami-id
