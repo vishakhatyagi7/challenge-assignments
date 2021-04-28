@@ -1,3 +1,6 @@
 Challenge-1/main/.terraform*
 Challenge-1/main/terraform*
 Challenge-1/Terraform*
+.gitignore
+.git*
+.DS*
