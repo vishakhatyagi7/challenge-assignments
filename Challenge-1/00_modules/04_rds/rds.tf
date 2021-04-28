@@ -88,7 +88,7 @@ resource "aws_rds_cluster_parameter_group" "cluster_parameter_group" {
 
 
 #===============================
-#rds 01 sg oltp
+#rds 01 sg 
 #================================
 resource "aws_security_group" "rds-sg" {
   name = "aws-sg-${var.application_name}-${var.environment}"
@@ -96,7 +96,7 @@ resource "aws_security_group" "rds-sg" {
   vpc_id      = "${var.vpc_id}"
   tags = {
     Name = "aws-sg-${var.application_name}-${var.environment}"
-    Description = "security group for oltp rds in ${var.application_name} ${var.environment} environment"
+    Description = "security group for rds in ${var.application_name} ${var.environment} environment"
     Environment = var.environment
   }
 }
